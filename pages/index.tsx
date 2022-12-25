@@ -16,11 +16,9 @@ export default function Home() {
 	const categoryAPI = useGetAPI(new CategoryAPI(`${publicRuntimeConfig.apiURL}/categories`))
 	const postAPI = useGetAPI(new PostAPI(`${publicRuntimeConfig.apiURL}/posts`))
 
-	const { items: projects, setFilters, totalPages, setPagination, pagination } = useFetch<Project>(projectAPI, { currentPage: 1, limit: 6 }, [])
-
-
+	const { items: projects, setFilters, totalPages, setPagination, pagination } = useFetch<Project>(projectAPI, { currentPage: 1, limit: 6 }, [{ by: 'name', order: 'asc' }])
 	const { items: categories } = useFetch<Category>(categoryAPI, { currentPage: 1, limit: 10 }, [])
-	const { items: posts } = useFetch<Post>(postAPI, { currentPage: 1, limit: 3 }, [])
+	const { items: posts } = useFetch<Post>(postAPI, { currentPage: 1, limit: 3 }, [{ order: 'desc', by: 'publishedDate' }])
 
 	const categoriesMap = useGetCategoriesMap(categories)
 
@@ -30,10 +28,10 @@ export default function Home() {
 			<div className="flex flex-col items-center justify-center col-span-6 mx-4 md:col-start-2 md:col-span-4">
 				<h1 className="text-6xl ">Jose Mata</h1>
 				<p className="mt-10 text-2xl">
-				I&#39;m a junior software developer who wants to start a professional career in this amazing field.
-				I found my passion in backend development, though not limited to that, having also solid knowledge
-				about web development with React and cloud services such as AWS. For that reason, I always try to write
-				code clean, testable, maintainable, reusable, and easy to extend, following design patterns like Clean Architecture.
+					I&#39;m a junior software developer who wants to start a professional career in this amazing field.
+					I found my passion in backend development, though not limited to that, having also solid knowledge
+					about web development with React and cloud services such as AWS. For that reason, I always try to write
+					code clean, testable, maintainable, reusable, and easy to extend, following design patterns like Clean Architecture.
 				</p>
 
 			</div>

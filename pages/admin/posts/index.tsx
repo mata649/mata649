@@ -17,7 +17,7 @@ const Skills = () => {
 	const { items: posts, setItems: setPosts, pagination, totalPages, setPagination } = useFetch<Post>(
 		postAPI,
 		{ currentPage: 1, limit: 10 },
-		[{ order: 'asc', by: 'publishedDate' }])
+		[{ order: 'desc', by: 'publishedDate' }])
 
 
 

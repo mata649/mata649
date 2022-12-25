@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import React from 'react'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare, faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 export const PostContentCard = ({ postContent, handleDelete }: { postContent: PostContent, handleDelete: (id: string, name: string) => Promise<void> }) => {
 	const router = useRouter()
 	const handleRedirectToForm = () => {
@@ -22,8 +23,9 @@ export const PostContentCard = ({ postContent, handleDelete }: { postContent: Po
 			<p className='mb-2 text-3xl truncate border-b-2'>{postContent.title}</p>
 
 			<p className='mb-2'>{postContent.language}</p>
-			<div className='flex justify-between'>	<button className='hover:text-yellow-400' onClick={handleRedirectToForm}><span className="material-symbols-outlined">edit</span></button>
-				<button className='hover:text-yellow-400' onClick={() => handleDelete(postContent.id, postContent.title)}><span className="material-symbols-outlined" >delete</span></button>
+			<div className='flex justify-between'>
+				<button onClick={handleRedirectToForm}><FontAwesomeIcon className='text-xl text-white hover:text-yellow-400' icon={faPenToSquare} /></button>
+				<button className='hover:text-yellow-400' onClick={() => handleDelete(postContent.id, postContent.title)}><FontAwesomeIcon className='text-xl text-white hover:text-yellow-400' icon={faTrashAlt} /></button>
 			</div>
 		</div>
 	)

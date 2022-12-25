@@ -1,5 +1,9 @@
 import { useRouter } from 'next/router'
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare, faTrashAlt } from "@fortawesome/free-regular-svg-icons";
+
+
 
 export const Row = ({
 	skill,
@@ -27,8 +31,8 @@ export const Row = ({
 			<td className='text-center border '>{skill.name}</td>
 			<td className='px-4 text-center border ' style={{ color: categoriesMap.get(skill.idCategory)?.color }}>{categoriesMap.get(skill.idCategory)?.name}</td>
 			<td className='flex items-center justify-center gap-1 px-4 text-center border' >
-				<button className='hover:text-yellow-400' onClick={handleRedirectToForm}><span className="material-symbols-outlined">edit</span></button>
-				<button className='hover:text-yellow-400' onClick={() => handleDelete(skill.id, skill.name)}><span className="material-symbols-outlined" >delete</span></button>
+				<button onClick={handleRedirectToForm}><FontAwesomeIcon className='text-xl text-white hover:text-yellow-400' icon={faPenToSquare} /> </button>
+				<button onClick={() => handleDelete(skill.id, skill.name)}><FontAwesomeIcon className='text-xl text-white hover:text-yellow-400' icon={faTrashAlt} /></button>
 			</td>
 		</tr>
 	)

@@ -10,7 +10,9 @@ import { AddButton, BackButton, Table } from 'components/admin'
 
 
 const Categories = () => {
+
 	const { publicRuntimeConfig } = getConfig()
+
 	const categoryAPI = useGetAPI(new CategoryAPI(`${publicRuntimeConfig.apiURL}/categories`))
 
 	const { items: categories, pagination, totalPages, setPagination, setItems:setCategories } = useFetch<Category>(categoryAPI, { currentPage: 1, limit: 100 }, [{ order: 'asc', by: 'name' }])
