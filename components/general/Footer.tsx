@@ -9,7 +9,7 @@ export const Footer = () => {
 			<div className='flex items-center justify-center gap-3 mt-20'>
 				<h1 className='text-6xl '>Contact</h1>
 				<a href="#up">
-					<FontAwesomeIcon className='text-4xl text-white ' icon={faUpLong} />
+					<FontAwesomeIcon className='text-3xl text-white ' icon={faUpLong} />
 
 				</a>
 

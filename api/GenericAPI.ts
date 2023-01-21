@@ -14,7 +14,7 @@ export class GenericAPI<T extends { id?: string }> {
 	protected buildOrderString(orderBy: Order[]): string {
 		let orderString = 'orderBy=';
 		orderBy.forEach((argument) => {
-			orderString = orderString + `${argument.by}_${argument.order}`;
+			orderString = orderString + `${argument.by}_${argument.order},`;
 		});
 		return orderString;
 	}

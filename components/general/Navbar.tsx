@@ -1,7 +1,9 @@
+import { useSession } from 'hooks'
 import Link from 'next/link'
 import React from 'react'
 
 export const Navbar = () => {
+	const { isLogged, logOut } = useSession()
 	const handleOnClick = () => {
 		const navbar = document.getElementById('navbar-default')
 		if (navbar?.classList.contains('hidden')) {
@@ -38,6 +40,11 @@ export const Navbar = () => {
 							<Link href="#contact" className="block py-2 pl-3 pr-4 rounded text-slate-200 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover: md:p-0 dark:text-gray-400 md:dark:hover:text-slate-200 dark:hover:bg-gray-700 dark:hover:text-slate-200 md:dark:hover:bg-transparent">Contact</Link>
 						</li>
 
+						{isLogged &&
+							<li>
+								<button onClick={() => { logOut() }} className="block py-2 pl-3 pr-4 rounded text-slate-200 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover: md:p-0 dark:text-gray-400 md:dark:hover:text-slate-200 dark:hover:bg-gray-700 dark:hover:text-slate-200 md:dark:hover:bg-transparent">Log Out</button>
+							</li>
+						}
 					</ul>
 				</div>
 			</div>

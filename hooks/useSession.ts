@@ -1,20 +1,14 @@
-import {  useEffect, useState } from 'react';
-
+import { useEffect, useState } from 'react';
 
 export const useSession = () => {
-	const [isLogged, setIsLogged] = useState(false);
-	const [jwt, setJwt] = useState('');
-
 	useEffect(() => {
 		const localJWT = localStorage.getItem('jwt');
+		setIsLogged(localJWT ? true : false);
 		setJwt(localJWT ? localJWT : '');
-
-		if (localJWT) {
-			setIsLogged(true);
-		} else {
-			setIsLogged(false);
-		}
 	}, []);
+
+	const [isLogged, setIsLogged] = useState(false);
+	const [jwt, setJwt] = useState('');
 
 	const logOut = () => {
 		setJwt('');

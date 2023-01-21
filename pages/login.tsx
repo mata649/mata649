@@ -12,7 +12,9 @@ const Login = () => {
 	const { setLoading } = useContext(AppContext)
 	const { isLogged, logIn } = useSession()
 	const router = useRouter()
+
 	useEffect(() => {
+
 	  if (isLogged) {
 		router.push('/admin')
 	  }
@@ -41,6 +43,7 @@ const Login = () => {
 			})
 			if (resp.status === 200) {
 				logIn(resp.data?.jwt)
+				router.push('/admin')
 			}
 		} catch (error) {
 			if (axios.isAxiosError(error)) {
