@@ -2,14 +2,6 @@ import axios, { AxiosError } from 'axios';
 
 export class GenericAPI<T extends { id?: string }> {
 	constructor(protected url: string) {}
-	protected buildQueryString(filters: Partial<T> | undefined): string {
-		let queryString = '';
-		for (const key in filters) {
-			queryString = `${queryString}&${key}=${filters[key as keyof T]}`;
-		}
-
-		return queryString;
-	}
 
 	protected buildOrderString(orderBy: Order[]): string {
 		let orderString = 'orderBy=';
@@ -39,12 +31,19 @@ export class GenericAPI<T extends { id?: string }> {
 		items: T[];
 		totalPages: number;
 	} | null> {
-		let queryString = this.buildQueryString(filters);
-		queryString =  this.buildOrderString(orderBy)+queryString;
+
+		const queryString =  this.buildOrderString(orderBy);
+		console.log(filters)
 		try {
 
 			const res = await axios.get(
-				`${this.url}?page=${pagination.currentPage}&limit=${pagination.limit}&${queryString}`
+				`${this.url}?${queryString}`,{
+					params:{
+						...pagination,
+						...filters
+					},
+
+				}
 			);
 
 			return {
