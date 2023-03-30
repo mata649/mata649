@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+require("dotenv")
+
 const nextConfig = {
 	reactStrictMode: false,
 	swcMinify: true,
