@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-require("dotenv")
+require("dotenv").config()
 
 const nextConfig = {
 	reactStrictMode: false,
