@@ -7,9 +7,7 @@ const nextConfig = {
 	},
 	compiler: {
 		styledComponents: true
-	},
-	basePath: "/nextjs-pages",
-	assetPrefix: "/nextjs-pages"
+	}
 }
 
 module.exports = nextConfig
