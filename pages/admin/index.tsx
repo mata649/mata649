@@ -1,19 +1,11 @@
 import Link from 'next/link'
 import React, { useEffect } from 'react'
 import { AdminCard } from 'components/admin'
-import { useSession } from 'hooks'
+import { useIsLogged, useSession } from 'hooks'
 import { useRouter } from 'next/router'
 
 const Admin = () => {
-	const { isLogged } = useSession()
-	const router = useRouter()
-	useEffect(() => {
-
-		// if (!isLogged) {
-
-		// 	router.push('/login')
-		// }
-	}, [isLogged, router])
+	useIsLogged()
 
 	return (
 		<div className='grid grid-cols-6 gap-4 '>

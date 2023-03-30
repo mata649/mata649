@@ -1,7 +1,7 @@
 import { CategoryAPI } from 'api';
 import axios, { AxiosError } from 'axios';
 import { getErrorMessage, errorModal, successModal, validateFields } from 'helpers';
-import { useGetAPI } from 'hooks'
+import { useGetAPI, useIsLogged } from 'hooks'
 import getConfig from 'next/config';
 import { useRouter } from 'next/router';
 import React, { useRef, useState } from 'react'
@@ -9,6 +9,7 @@ import React, { useRef, useState } from 'react'
 
 
 const New = () => {
+	useIsLogged()
 	const { publicRuntimeConfig } = getConfig()
 	const router = useRouter()
 	const { id, color, name }: Partial<Category> = router.query

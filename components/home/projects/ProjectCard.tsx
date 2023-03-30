@@ -12,7 +12,7 @@ export const ProjectCard = ({ project: { githubUrl, idCategory, description, nam
 	}
 	return (
 
-		<div className='flex flex-col justify-between px-3 py-4 border rounded-lg hover:border-yellow-400 hover:scale-105'>
+		<div className='flex flex-col justify-between px-3 py-4 border rounded-lg hover:border-yellow-400 hover:scale-105 hover:border-2'>
 			<div className='w-full py-2 border-b-2'>
 				<h2 className='text-xl'>{name}</h2>
 			</div>
@@ -20,7 +20,7 @@ export const ProjectCard = ({ project: { githubUrl, idCategory, description, nam
 			<div className='flex justify-between'>
 				<p className='font-bold' style={{ color: categoriesMap.get(idCategory)?.color }}>{categoriesMap.get(idCategory)?.name}</p>
 
-				<a className='font-bold' href={githubUrl} target="_blank" style={{ color: "#0b7285" }} rel="noopener noreferrer">github</a>
+				<a className='font-bold' href={githubUrl} target="_blank" style={{ color: "#0b7285" }} rel="noopener noreferrer">GitHub</a>
 			</div>
 		</div>
 	)

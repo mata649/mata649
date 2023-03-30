@@ -1,6 +1,6 @@
 import React from 'react'
 import { Row } from 'components/admin/posts'
-import { useFetch, useGetAPI } from 'hooks'
+import { useFetch, useGetAPI, useIsLogged } from 'hooks'
 import { Pagination } from 'components/general'
 
 import getConfig from 'next/config'
@@ -11,6 +11,7 @@ import { AddButton, BackButton, Table } from 'components/admin'
 
 
 const Skills = () => {
+	useIsLogged()
 	const { publicRuntimeConfig } = getConfig()
 	const postAPI = useGetAPI(new PostAPI(`${publicRuntimeConfig.apiURL}/posts`))
 

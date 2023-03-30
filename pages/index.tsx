@@ -2,25 +2,28 @@ import { AboutSection } from "components/home/about";
 import { PostList, PostCard } from "components/post";
 import { ProjectList, ProjectCard } from "components/home/projects";
 import { SkillList, SkillRow, CategoryList } from "components/home/skills";
-import { useFetchSkillsByCategory, useGetCategoriesMap, useFetch, useGetAPI } from "hooks";
+import { useGetCategoriesMap, useFetch, useGetAPI, useGetSkillsByCategory } from "hooks";
 import Link from "next/link";
 import getConfig from "next/config";
-import { CategoryAPI, PostAPI, ProjectAPI } from "api";
+import { CategoryAPI, PostAPI, ProjectAPI, SkillAPI } from "api";
+
 
 
 export default function Home() {
 	const { publicRuntimeConfig } = getConfig()
-	const { skills } = useFetchSkillsByCategory()
 
 	const projectAPI = useGetAPI(new ProjectAPI(`${publicRuntimeConfig.apiURL}/projects`))
 	const categoryAPI = useGetAPI(new CategoryAPI(`${publicRuntimeConfig.apiURL}/categories`))
 	const postAPI = useGetAPI(new PostAPI(`${publicRuntimeConfig.apiURL}/posts`))
+	const skillAPI = useGetAPI(new SkillAPI(`${publicRuntimeConfig.apiURL}/skills`))
 
 	const { items: projects, setFilters, totalPages, setPagination, pagination } = useFetch<Project>(projectAPI, { currentPage: 1, limit: 6 }, [{ by: 'name', order: 'asc' }])
 	const { items: categories } = useFetch<Category>(categoryAPI, { currentPage: 1, limit: 10 }, [])
+	const { items: skills } = useFetch<Skill>(skillAPI, { currentPage: 1, limit: 100 }, [])
 	const { items: posts } = useFetch<Post>(postAPI, { currentPage: 1, limit: 3 }, [{ order: 'desc', by: 'publishedDate' }])
 
 	const categoriesMap = useGetCategoriesMap(categories)
+	const skillsByCategory = useGetSkillsByCategory(skills, categoriesMap)
 
 	return (<>
 
@@ -38,22 +41,24 @@ export default function Home() {
 		</AboutSection>
 		<h1 id="skills" className="pt-10 mt-32 mb-10 text-6xl text-center">Skills</h1>
 		<CategoryList>
-			{
-				skills.map(({ skills, name, color }) => (
-					<SkillList key={`cat-${name}`} name={name} color={color}>
+			{ Array.from(skillsByCategory.keys()).length > 0 &&
+				Array.from(skillsByCategory.keys()).map((idCategory) => (
+					<SkillList key={`cat-${skillsByCategory.get(idCategory)?.name as string}`} name={skillsByCategory.get(idCategory)?.name as string} color={skillsByCategory.get(idCategory)?.color as string}>
 						{
-							skills.map((skill) => (
+							skillsByCategory.get(idCategory)?.skills.map((skill) => (
 								<SkillRow key={`skill-${skill.name}`} name={skill.name} />
 							))
 						}
 					</SkillList>
-				))
+				)
+				)
+
 			}
 		</CategoryList>
 
 		<h1 id='projects' className='mt-32 text-6xl text-center'>Projects</h1>
 		<ProjectList setFilters={setFilters} categories={categories} totalPages={totalPages} pagination={pagination} setPagination={setPagination} >
-			{
+			{	projects.length > 0 &&
 				projects.map((project) => (
 					<ProjectCard key={`skill-${project.id}`} project={project} categoriesMap={categoriesMap} />
 				))
@@ -63,6 +68,7 @@ export default function Home() {
 		<h1 id="blog" className='mt-32 mb-20 text-6xl text-center'>Latest Posts</h1>
 		<PostList>
 			{
+				posts.length > 0 &&
 				posts.map(({ id, defaultTitle, publishedDate, slug }) => (
 					<PostCard id={id} slug={slug} defaultTitle={defaultTitle} publishedDate={publishedDate} key={`post-${id}`} />
 				))

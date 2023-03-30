@@ -1,9 +1,10 @@
+import { SessionContext } from 'components/context'
 import { useSession } from 'hooks'
 import Link from 'next/link'
-import React from 'react'
+import React, { useContext } from 'react'
 
 export const Navbar = () => {
-	const { isLogged, logOut } = useSession()
+	const { isLogged, logOut } = useContext(SessionContext)
 	const handleOnClick = () => {
 		const navbar = document.getElementById('navbar-default')
 		if (navbar?.classList.contains('hidden')) {

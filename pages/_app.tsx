@@ -1,7 +1,7 @@
 import 'styles/globals.css'
 import type { AppProps } from 'next/app'
 import { Layout } from 'components/general'
-import { AppProvider } from 'components/context'
+import { AppProvider, SessionContext, SessionProvider } from 'components/context'
 import Head from 'next/head'
 import { useEffect } from 'react'
 import { useSession } from 'hooks'
@@ -24,9 +24,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
 		</Head>
 		<AppProvider>
-			<Layout>
-				<Component {...pageProps} />
-			</Layout>
+			<SessionProvider>
+				<Layout>
+					<Component {...pageProps} />
+				</Layout>
+			</SessionProvider>
 		</AppProvider>
 	</>)
 }

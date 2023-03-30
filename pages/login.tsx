@@ -2,7 +2,7 @@ import axios from 'axios'
 import getConfig from 'next/config'
 import { useRouter } from 'next/router'
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import { AppContext } from 'components/context'
+import { AppContext, SessionContext } from 'components/context'
 import { useSession } from 'hooks'
 
 const Login = () => {
@@ -10,15 +10,16 @@ const Login = () => {
 	const [errorMessage, setErrorMessage] = useState<string>('')
 	const { publicRuntimeConfig } = getConfig();
 	const { setLoading } = useContext(AppContext)
-	const { isLogged, logIn } = useSession()
+	const {isLogged, logIn} = useContext(SessionContext)
 	const router = useRouter()
 
 	useEffect(() => {
-
-	  if (isLogged) {
-		router.push('/admin')
-	  }
-	}, [isLogged, router])
+		setLoading(true)
+		if (isLogged) {
+			router.push('/admin')
+		}
+		setLoading(false)
+	}, [isLogged, router, setLoading])
 
 
 	const handleSubmit = async (e: { preventDefault: () => void }) => {

@@ -1,6 +1,6 @@
 import React from 'react'
 import {  Row } from 'components/admin/categories'
-import { useFetch, useGetAPI } from 'hooks'
+import { useFetch, useGetAPI, useIsLogged } from 'hooks'
 import { Pagination } from 'components/general'
 import getConfig from 'next/config'
 import { CategoryAPI } from 'api'
@@ -10,7 +10,7 @@ import { AddButton, BackButton, Table } from 'components/admin'
 
 
 const Categories = () => {
-
+	useIsLogged()
 	const { publicRuntimeConfig } = getConfig()
 
 	const categoryAPI = useGetAPI(new CategoryAPI(`${publicRuntimeConfig.apiURL}/categories`))

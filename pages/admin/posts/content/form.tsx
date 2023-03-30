@@ -3,7 +3,7 @@ import ReactTextareaAutosize from 'react-textarea-autosize'
 import { ToggleButton } from 'components/admin/postContent';
 import { useRouter } from 'next/router';
 import { errorModal, getErrorMessage, successModal, validateFields } from 'helpers';
-import { useGetAPI, useHtmlToDraftBlocks } from 'hooks';
+import { useGetAPI, useHtmlToDraftBlocks, useIsLogged } from 'hooks';
 import getConfig from 'next/config';
 import { PostContentAPI } from 'api';
 import axios, { AxiosError } from 'axios';
@@ -17,6 +17,7 @@ const Editor = dynamic(
 	{ ssr: false }
 );
 const Form = () => {
+	useIsLogged()
 	const { publicRuntimeConfig } = getConfig()
 	const router = useRouter()
 

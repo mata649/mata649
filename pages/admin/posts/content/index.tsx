@@ -3,12 +3,13 @@ import axios from 'axios'
 import { AddButton } from 'components/admin'
 import { PostContentCard } from 'components/admin/postContent'
 import { errorModal, successModal, yesNoModal } from 'helpers'
-import { useFetch, useGetAPI } from 'hooks'
+import { useFetch, useGetAPI, useIsLogged } from 'hooks'
 import getConfig from 'next/config'
 import { useRouter } from 'next/router'
 import React from 'react'
 
 const Content = () => {
+	useIsLogged()
 	const router = useRouter()
 	const { idPost } = router.query
 	const { publicRuntimeConfig } = getConfig()

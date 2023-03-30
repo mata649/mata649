@@ -4,11 +4,12 @@ import { useEffect, useState } from 'react';
  * @param {Category[]} categories - List of categories to map
  * @returns {Map<string,string>} - Categories Map
  */
-export const useGetCategoriesMap = (categories: Category[]) => {
+export const useGetCategoriesMap = (categories: Category[]): Map<string, Omit<Category, "id">> => {
 	const [categoriesMap, setCategoriesMap] = useState<
 		Map<string, Omit<Category, 'id'>>
 	>(new Map<string, Omit<Category, 'id'>>);
 	useEffect(() => {
+
 		const cache = new Map<string, Omit<Category, 'id'>>();
 		categories.forEach((category) => {
 			if (cache.has(category.id)) {

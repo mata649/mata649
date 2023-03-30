@@ -40,3 +40,9 @@ declare interface PostContent {
 	title: string;
 	content: string;
 }
+
+declare interface SkillByCategory extends Omit<Category> {
+	color: string
+	name: string
+	skills: Omit<Skill, 'id' | 'idCategory'>[];
+}

@@ -27,7 +27,7 @@ export const ProjectList = ({
 				<div className='flex justify-end mt-4 col-span-full'>
 					<select onChange={handleCategoryChange} defaultValue="" className='text-2xl bg-black' style={{ backgroundColor: "#181818", borderColor: "#ededed" }}>
 						<option value="" >Category</option>
-						{categories.map(({ id, color, name }) => (
+						{categories.length > 0 && categories.map(({ id, color, name }) => (
 							<option key={`cat-${id}`} value={id} style={{ color: color }}>{name}</option>
 						))}
 					</select>

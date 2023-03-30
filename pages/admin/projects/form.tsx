@@ -1,7 +1,7 @@
 import { CategoryAPI, ProjectAPI } from 'api';
 import axios, { AxiosError } from 'axios';
 import { getErrorMessage, errorModal, successModal, validateFields } from 'helpers';
-import { useFetch, useGetAPI } from 'hooks'
+import { useFetch, useGetAPI, useIsLogged } from 'hooks'
 import getConfig from 'next/config';
 import { useRouter } from 'next/router';
 import React, { useRef, useState } from 'react'
@@ -9,6 +9,7 @@ import ReactTextareaAutosize from 'react-textarea-autosize';
 
 
 const New = () => {
+	useIsLogged()
 	const { publicRuntimeConfig } = getConfig()
 	const router = useRouter()
 	const { id, idCategory, name, description, githubUrl }: Partial<Project> = router.query

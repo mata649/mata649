@@ -33,7 +33,6 @@ export class GenericAPI<T extends { id?: string }> {
 	} | null> {
 
 		const queryString =  this.buildOrderString(orderBy);
-		console.log(filters)
 		try {
 
 			const res = await axios.get(
@@ -45,13 +44,16 @@ export class GenericAPI<T extends { id?: string }> {
 
 				}
 			);
-
 			return {
 				items: res.data.data,
 				totalPages: res.data.totalPages,
 			};
 		} catch (error) {
-			return null;
+			return {
+				items:[],
+				totalPages:0,
+
+			};
 		}
 	}
 
