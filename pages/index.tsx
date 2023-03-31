@@ -4,18 +4,16 @@ import { ProjectList, ProjectCard } from "components/home/projects";
 import { SkillList, SkillRow, CategoryList } from "components/home/skills";
 import { useGetCategoriesMap, useFetch, useGetAPI, useGetSkillsByCategory } from "hooks";
 import Link from "next/link";
-import getConfig from "next/config";
 import { CategoryAPI, PostAPI, ProjectAPI, SkillAPI } from "api";
 
 
 
 export default function Home() {
-	const { publicRuntimeConfig } = getConfig()
 
-	const projectAPI = useGetAPI(new ProjectAPI(`${publicRuntimeConfig.apiURL}/projects`))
-	const categoryAPI = useGetAPI(new CategoryAPI(`${publicRuntimeConfig.apiURL}/categories`))
-	const postAPI = useGetAPI(new PostAPI(`${publicRuntimeConfig.apiURL}/posts`))
-	const skillAPI = useGetAPI(new SkillAPI(`${publicRuntimeConfig.apiURL}/skills`))
+	const projectAPI = useGetAPI(new ProjectAPI(`${process.env.NEXT_PUBLIC_API_HOST}/projects`))
+	const categoryAPI = useGetAPI(new CategoryAPI(`${process.env.NEXT_PUBLIC_API_HOST}/categories`))
+	const postAPI = useGetAPI(new PostAPI(`${process.env.NEXT_PUBLIC_API_HOST}/posts`))
+	const skillAPI = useGetAPI(new SkillAPI(`${process.env.NEXT_PUBLIC_API_HOST}/skills`))
 
 	const { items: projects, setFilters, totalPages, setPagination, pagination } = useFetch<Project>(projectAPI, { currentPage: 1, limit: 6 }, [{ by: 'name', order: 'asc' }])
 	const { items: categories } = useFetch<Category>(categoryAPI, { currentPage: 1, limit: 10 }, [])

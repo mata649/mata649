@@ -3,12 +3,10 @@ import React from 'react'
 import { PostCard, PostList } from 'components/post'
 import { useFetch,useGetAPI } from 'hooks'
 import { PostAPI } from 'api'
-import getConfig from 'next/config'
 import { Pagination } from 'components/general'
 
 const Blog = () => {
-	const {publicRuntimeConfig} = getConfig()
-	const postAPI = useGetAPI(new PostAPI(`${publicRuntimeConfig.apiURL}/posts`))
+	const postAPI = useGetAPI(new PostAPI(`${process.env.NEXT_PUBLIC_API_HOST}/posts`))
 	const { items: posts, setPagination, totalPages, pagination } = useFetch<Post>(
 		postAPI,
 		{ currentPage: 1, limit: 4 },

@@ -3,7 +3,6 @@ import { useGetPostContents } from 'hooks'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import parse from 'html-react-parser'
-import { ToggleButton } from 'components/admin/postContent'
 import moment from 'moment'
 
 const PostContent = () => {

@@ -1,10 +1,8 @@
 import { PostAPI } from 'api';
 import { AppContext } from 'components/context';
-import getConfig from 'next/config';
 import { useContext, useEffect, useState } from 'react';
 
 export const useGetPostContents = (slug: string) => {
-	const { publicRuntimeConfig } = getConfig();
 	const [contents, setContents] = useState<PostContent[]>([]);
 	const [publishedDate, setPublishedDate] = useState<string>();
 	const { setLoading } = useContext(AppContext);
@@ -13,7 +11,7 @@ export const useGetPostContents = (slug: string) => {
 			setLoading(true);
 			if (slug !== undefined) {
 				const postAPI = new PostAPI(
-					`${publicRuntimeConfig.apiURL}/posts`
+					`${process.env.NEXT_PUBLIC_API_HOST}/posts`
 				);
 				const result = await postAPI.getContentBySlug(slug as string);
 				if (result !== null) {
@@ -29,7 +27,7 @@ export const useGetPostContents = (slug: string) => {
 			}
 			setLoading(false);
 		})();
-	}, [publicRuntimeConfig.apiURL, setLoading, slug]);
+	}, [ setLoading, slug]);
 	return {
 		contents,
 		publishedDate

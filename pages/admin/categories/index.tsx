@@ -2,7 +2,6 @@ import React from 'react'
 import {  Row } from 'components/admin/categories'
 import { useFetch, useGetAPI, useIsLogged } from 'hooks'
 import { Pagination } from 'components/general'
-import getConfig from 'next/config'
 import { CategoryAPI } from 'api'
 import { errorModal, successModal, yesNoModal } from 'helpers'
 import axios from 'axios'
@@ -11,9 +10,8 @@ import { AddButton, BackButton, Table } from 'components/admin'
 
 const Categories = () => {
 	useIsLogged()
-	const { publicRuntimeConfig } = getConfig()
 
-	const categoryAPI = useGetAPI(new CategoryAPI(`${publicRuntimeConfig.apiURL}/categories`))
+	const categoryAPI = useGetAPI(new CategoryAPI(`${process.env.NEXT_PUBLIC_API_HOST}/categories`))
 
 	const { items: categories, pagination, totalPages, setPagination, setItems:setCategories } = useFetch<Category>(categoryAPI, { currentPage: 1, limit: 100 }, [{ order: 'asc', by: 'name' }])
 

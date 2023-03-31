@@ -2,18 +2,16 @@ import { CategoryAPI, SkillAPI } from 'api';
 import axios, { AxiosError } from 'axios';
 import { getErrorMessage, errorModal, successModal, validateFields} from 'helpers';
 import { useFetch, useGetAPI, useIsLogged } from 'hooks'
-import getConfig from 'next/config';
 import { useRouter } from 'next/router';
 import React, { useRef, useState } from 'react'
 
 
 const New = () => {
 	useIsLogged()
-	const { publicRuntimeConfig } = getConfig()
 	const router = useRouter()
 	const { id, idCategory, name }: Partial<Skill> = router.query
-	const skillAPI = useGetAPI(new SkillAPI(`${publicRuntimeConfig.apiURL}/skills`))
-	const categoryAPI = useGetAPI(new CategoryAPI(`${publicRuntimeConfig.apiURL}/categories`))
+	const skillAPI = useGetAPI(new SkillAPI(`${process.env.NEXT_PUBLIC_API_HOST}/skills`))
+	const categoryAPI = useGetAPI(new CategoryAPI(`${process.env.NEXT_PUBLIC_API_HOST}/categories`))
 
 	const { items: categories } = useFetch<Category>(categoryAPI, { currentPage: 1, limit: 10 }, [{ by: 'name', order: 'asc' }])
 

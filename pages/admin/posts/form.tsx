@@ -1,18 +1,16 @@
 import { PostAPI } from 'api';
 import axios, { AxiosError } from 'axios';
 import { getErrorMessage, errorModal, successModal, validateFields } from 'helpers';
-import { useFetch, useGetAPI, useIsLogged } from 'hooks'
-import getConfig from 'next/config';
+import { useGetAPI, useIsLogged } from 'hooks'
 import { useRouter } from 'next/router';
 import React, { useRef, useState } from 'react'
 
 
 const New = () => {
 	useIsLogged()
-	const { publicRuntimeConfig } = getConfig()
 	const router = useRouter()
 	const { id, defaultTitle, slug }: Partial<Post> = router.query
-	const postAPI = useGetAPI(new PostAPI(`${publicRuntimeConfig.apiURL}/posts`))
+	const postAPI = useGetAPI(new PostAPI(`${process.env.NEXT_PUBLIC_API_HOST}/posts`))
 
 	const [errorMessage, setErrorMessage] = useState('')
 	const form = useRef<HTMLFormElement | null>(null)

@@ -2,7 +2,6 @@ import { CategoryAPI, ProjectAPI } from 'api';
 import axios, { AxiosError } from 'axios';
 import { getErrorMessage, errorModal, successModal, validateFields } from 'helpers';
 import { useFetch, useGetAPI, useIsLogged } from 'hooks'
-import getConfig from 'next/config';
 import { useRouter } from 'next/router';
 import React, { useRef, useState } from 'react'
 import ReactTextareaAutosize from 'react-textarea-autosize';
@@ -10,11 +9,10 @@ import ReactTextareaAutosize from 'react-textarea-autosize';
 
 const New = () => {
 	useIsLogged()
-	const { publicRuntimeConfig } = getConfig()
 	const router = useRouter()
 	const { id, idCategory, name, description, githubUrl }: Partial<Project> = router.query
-	const projectAPI = useGetAPI(new ProjectAPI(`${publicRuntimeConfig.apiURL}/projects`))
-	const categoryAPI = useGetAPI(new CategoryAPI(`${publicRuntimeConfig.apiURL}/categories`))
+	const projectAPI = useGetAPI(new ProjectAPI(`${process.env.NEXT_PUBLIC_API_HOST}/projects`))
+	const categoryAPI = useGetAPI(new CategoryAPI(`${process.env.NEXT_PUBLIC_API_HOST}/categories`))
 
 	const { items: categories } = useFetch<Category>(categoryAPI, { currentPage: 1, limit: 10 }, [{ by: 'name', order: 'asc' }])
 

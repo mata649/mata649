@@ -1,14 +1,11 @@
 import axios from 'axios'
-import getConfig from 'next/config'
 import { useRouter } from 'next/router'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { AppContext, SessionContext } from 'components/context'
-import { useSession } from 'hooks'
 
 const Login = () => {
 	const form = useRef<HTMLFormElement | null>(null)
 	const [errorMessage, setErrorMessage] = useState<string>('')
-	const { publicRuntimeConfig } = getConfig();
 	const { setLoading } = useContext(AppContext)
 	const {isLogged, logIn} = useContext(SessionContext)
 	const router = useRouter()
@@ -38,7 +35,7 @@ const Login = () => {
 		}
 		setLoading(true)
 		try {
-			const resp = await axios.post(`${publicRuntimeConfig.apiURL}/users/auth`, {
+			const resp = await axios.post(`${process.env.NEXT_PUBLIC_API_HOST}/users/auth`, {
 				email,
 				password
 			})

@@ -3,7 +3,6 @@ import { Row } from 'components/admin/posts'
 import { useFetch, useGetAPI, useIsLogged } from 'hooks'
 import { Pagination } from 'components/general'
 
-import getConfig from 'next/config'
 import { PostAPI} from 'api'
 import { errorModal, successModal, yesNoModal } from 'helpers'
 import axios from 'axios'
@@ -12,8 +11,7 @@ import { AddButton, BackButton, Table } from 'components/admin'
 
 const Skills = () => {
 	useIsLogged()
-	const { publicRuntimeConfig } = getConfig()
-	const postAPI = useGetAPI(new PostAPI(`${publicRuntimeConfig.apiURL}/posts`))
+	const postAPI = useGetAPI(new PostAPI(`${process.env.NEXT_PUBLIC_API_HOST}/posts`))
 
 	const { items: posts, setItems: setPosts, pagination, totalPages, setPagination } = useFetch<Post>(
 		postAPI,

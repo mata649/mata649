@@ -1,8 +1,6 @@
-import Link from 'next/link'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { AdminCard } from 'components/admin'
-import { useIsLogged, useSession } from 'hooks'
-import { useRouter } from 'next/router'
+import { useIsLogged  } from 'hooks'
 
 const Admin = () => {
 	useIsLogged()

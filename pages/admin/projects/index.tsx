@@ -2,7 +2,6 @@ import React from 'react'
 import { Row } from 'components/admin/projects'
 import { useFetch, useGetAPI, useGetCategoriesMap, useIsLogged } from 'hooks'
 import { Pagination } from 'components/general'
-import getConfig from 'next/config'
 import { CategoryAPI, ProjectAPI} from 'api'
 import { errorModal, successModal, yesNoModal } from 'helpers'
 import axios from 'axios'
@@ -11,9 +10,8 @@ import { AddButton, BackButton, Table } from 'components/admin'
 
 const Skills = () => {
 	useIsLogged()
-	const { publicRuntimeConfig } = getConfig()
-	const categoryAPI = useGetAPI(new CategoryAPI(`${publicRuntimeConfig.apiURL}/categories`))
-	const projectAPI = useGetAPI(new ProjectAPI(`${publicRuntimeConfig.apiURL}/projects`))
+	const categoryAPI = useGetAPI(new CategoryAPI(`${process.env.NEXT_PUBLIC_API_HOST}/categories`))
+	const projectAPI = useGetAPI(new ProjectAPI(`${process.env.NEXT_PUBLIC_API_HOST}/projects`))
 
 	const { items: projects, setItems: setProjects, pagination, totalPages, setPagination } = useFetch<Project>(
 		projectAPI,

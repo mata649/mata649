@@ -1,12 +1,10 @@
 import axios from 'axios';
 import { AppContext } from 'components/context';
-import getConfig from 'next/config';
 import { useContext, useEffect, useState } from 'react';
 
 export const useSession = () => {
 	const [isLogged, setIsLogged] = useState(false);
 	const [jwt, setJwt] = useState('');
-	const { publicRuntimeConfig } = getConfig();
 	const { setLoading } = useContext(AppContext);
 	useEffect(() => {
 		setLoading(true);
@@ -16,7 +14,7 @@ export const useSession = () => {
 			(async () => {
 				try {
 					const resp = await axios.get(
-						`${publicRuntimeConfig.apiURL}/users/validate`
+						`${process.env.NEXT_PUBLIC_API_HOST}/users/validate`
 					);
 					if (resp.status != 200) {
 						setIsLogged(false);
@@ -31,7 +29,7 @@ export const useSession = () => {
 			setIsLogged(false)
 		}
 		setLoading(false);
-	}, [jwt, publicRuntimeConfig.apiURL, setLoading]);
+	}, [jwt,  setLoading]);
 
 	const logOut = () => {
 		setJwt('');

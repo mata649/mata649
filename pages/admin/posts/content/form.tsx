@@ -4,7 +4,6 @@ import { ToggleButton } from 'components/admin/postContent';
 import { useRouter } from 'next/router';
 import { errorModal, getErrorMessage, successModal, validateFields } from 'helpers';
 import { useGetAPI, useHtmlToDraftBlocks, useIsLogged } from 'hooks';
-import getConfig from 'next/config';
 import { PostContentAPI } from 'api';
 import axios, { AxiosError } from 'axios';
 import draftjsToHtml from 'draftjs-to-html'
@@ -18,7 +17,6 @@ const Editor = dynamic(
 );
 const Form = () => {
 	useIsLogged()
-	const { publicRuntimeConfig } = getConfig()
 	const router = useRouter()
 
 
@@ -28,7 +26,7 @@ const Form = () => {
 	const contentState = useHtmlToDraftBlocks(content as string);
 	const [contentText, setContentText] = useState(EditorState.createEmpty())
 	const [errorMessage, setErrorMessage] = useState<string>('')
-	const postContentAPI = useGetAPI(new PostContentAPI(`${publicRuntimeConfig.apiURL}/postsContent`))
+	const postContentAPI = useGetAPI(new PostContentAPI(`${process.env.NEXT_PUBLIC_API_HOST}/postsContent`))
 	useEffect(() => {
 		if (contentState) {
 			setContentText(EditorState.createWithContent(contentState));

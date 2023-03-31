@@ -4,7 +4,6 @@ import { AddButton } from 'components/admin'
 import { PostContentCard } from 'components/admin/postContent'
 import { errorModal, successModal, yesNoModal } from 'helpers'
 import { useFetch, useGetAPI, useIsLogged } from 'hooks'
-import getConfig from 'next/config'
 import { useRouter } from 'next/router'
 import React from 'react'
 
@@ -12,8 +11,7 @@ const Content = () => {
 	useIsLogged()
 	const router = useRouter()
 	const { idPost } = router.query
-	const { publicRuntimeConfig } = getConfig()
-	const postContentAPI = useGetAPI(new PostContentAPI(`${publicRuntimeConfig.apiURL}/postsContent`))
+	const postContentAPI = useGetAPI(new PostContentAPI(`${process.env.NEXT_PUBLIC_API_HOST}/postsContent`))
 	const { items: postsContent, setItems: setPostContent } = useFetch(postContentAPI, { currentPage: 1, limit: 2 }, [{ order: 'asc', by: 'language' }], { idPost: idPost as string })
 
 	const handleDelete = async (id: string, name: string) => {

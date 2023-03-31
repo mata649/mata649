@@ -1,7 +1,7 @@
 import 'styles/globals.css'
 import type { AppProps } from 'next/app'
 import { Layout } from 'components/general'
-import { AppProvider, SessionContext, SessionProvider } from 'components/context'
+import { AppProvider, SessionProvider } from 'components/context'
 import Head from 'next/head'
 import { useEffect } from 'react'
 import { useSession } from 'hooks'
