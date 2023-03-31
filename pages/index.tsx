@@ -22,7 +22,6 @@ export default function Home() {
 
 	const categoriesMap = useGetCategoriesMap(categories)
 	const skillsByCategory = useGetSkillsByCategory(skills, categoriesMap)
-
 	return (<>
 
 		<AboutSection>
