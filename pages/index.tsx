@@ -73,7 +73,7 @@ export default function Home() {
 
 		</PostList>
 		<div className="flex justify-center mt-10">
-			<Link className="w-full text-2xl text-center" href="/blog" style={{ color: "#eab257" }}>See more..</Link>
+			<Link className="w-full text-2xl text-center text-primary" href="/blog" >See more..</Link>
 		</div>
 
 	</>

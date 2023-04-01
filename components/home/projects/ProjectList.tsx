@@ -25,7 +25,7 @@ export const ProjectList = ({
 		<>
 			<div  className='grid grid-cols-1 gap-4 mx-2 sm:mx-20 md:grid-cols-3 '>
 				<div className='flex justify-end mt-4 col-span-full'>
-					<select onChange={handleCategoryChange} defaultValue="" className='text-2xl bg-black' style={{ backgroundColor: "#181818", borderColor: "#ededed" }}>
+					<select onChange={handleCategoryChange} defaultValue="" className='text-2xl dark:bg-back-dark dark:text-txt-dark bg-back-light text-txt-light' >
 						<option value="" >Category</option>
 						{categories.length > 0 && categories.map(({ id, color, name }) => (
 							<option key={`cat-${id}`} value={id} style={{ color: color }}>{name}</option>

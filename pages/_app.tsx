@@ -6,7 +6,7 @@ import Head from 'next/head'
 import { useEffect } from 'react'
 import { useSession } from 'hooks'
 import axios from 'axios'
-
+import { ThemeProvider } from 'next-themes'
 export default function App({ Component, pageProps }: AppProps) {
 	const { jwt } = useSession()
 	useEffect(() => {
@@ -25,9 +25,11 @@ export default function App({ Component, pageProps }: AppProps) {
 		</Head>
 		<AppProvider>
 			<SessionProvider>
-				<Layout>
-					<Component {...pageProps} />
-				</Layout>
+				<ThemeProvider enableSystem={true} attribute="class">
+					<Layout>
+						<Component {...pageProps} />
+					</Layout>
+				</ThemeProvider>
 			</SessionProvider>
 		</AppProvider>
 	</>)

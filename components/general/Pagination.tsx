@@ -25,7 +25,7 @@ export const Pagination = ({ totalPages, pagination, setPagination }: { totalPag
 					(value, index) => (<a
 						style={
 							value + 1 === pagination.currentPage ?
-								{ color: "#eab257" } : {}
+								{ color: "#009177" } : {color: "#A96334"}
 						} key={`pag-${value + 1}`}
 						className='text-2xl cursor-pointer'
 						onClick={() => handleChangePage(value + 1)}

@@ -16,7 +16,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 		}
 	}, [jwt])
 
-	return <div>
+	return <div className=' dark:bg-back-dark dark:text-txt-dark bg-back-light text-txt-light'>
 		<Navbar />
 		{children}
 		<Footer />

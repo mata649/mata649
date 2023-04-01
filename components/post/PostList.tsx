@@ -6,7 +6,7 @@ export const PostList = ({ children }: {
 
 }) => {
 	return (<>
-		<div className='grid grid-cols-1 gap-4 mx-2 sm:mx-20 lg:grid-cols-3 md:grid-col-3 '>
+		<div className='grid grid-cols-1 gap-4 mx-2 sm:mx-20 sm:grid-cols-4 md:grid-cols-3 '>
 			{children}
 
 		</div>

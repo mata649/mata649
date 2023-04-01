@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { PostCard, PostList } from 'components/post'
-import { useFetch,useGetAPI } from 'hooks'
+import { useFetch, useGetAPI } from 'hooks'
 import { PostAPI } from 'api'
 import { Pagination } from 'components/general'
 
@@ -18,9 +18,9 @@ const Blog = () => {
 			<PostList>
 
 				{posts.map(({ defaultTitle, publishedDate, slug, id }) => (
-					<div key={`post-${id}`} className="col-start-2">
-						<PostCard defaultTitle={defaultTitle} publishedDate={publishedDate} slug={slug} id={id} />
-					</div>
+
+					<PostCard key={`post-${id}`} defaultTitle={defaultTitle} publishedDate={publishedDate} slug={slug} id={id} />
+
 				))}
 
 			</PostList>

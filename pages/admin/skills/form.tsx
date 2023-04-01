@@ -103,7 +103,7 @@ const New = () => {
 				}
 				<input type="text" placeholder="Name" className='text-xl text-center text-black' name='skillName' defaultValue={name} />
 
-				<select onChange={handleCategoryChange} defaultValue={idCategory} className='mb-8 text-xl bg-black' style={{ backgroundColor: "#181818", borderColor: "#ededed" }}>
+				<select onChange={handleCategoryChange} defaultValue={idCategory} className='mb-8 text-xl dark:bg-back-dark dark:text-txt-dark bg-back-light text-txt-light' >
 					{idCategory ? <option value={idCategory}>{categories.find((category) => (category.id === idCategory))?.name}</option> : <option value="">Category</option>}
 					{categories.map((category) => (
 
