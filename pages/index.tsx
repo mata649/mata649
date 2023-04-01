@@ -28,17 +28,17 @@ export default function Home() {
 			<div className="flex flex-col items-center justify-center col-span-6 mx-4 md:col-start-2 md:col-span-4">
 				<h1 className="text-6xl ">Jose Mata</h1>
 				<p className="mt-10 text-2xl">
-					I&#39;m a junior software developer who wants to start a professional career in this amazing field.
-					I found my passion in backend development, though not limited to that, having also solid knowledge
-					about web development with React and cloud services such as AWS. For that reason, I always try to write
-					code clean, testable, maintainable, reusable, and easy to extend, following design patterns like Clean Architecture.
+					I&#39;m a person who is passionate about software development, software architecture and cloud.
+					For that reason, I always try to write code clean, testable, maintainable, reusable, and easy to extend,
+					following design patterns like Clean Architecture. I found my passion in Back-End development, although not limited to that, having also solid knowledge
+					about Front-End development with React/Next.js and cloud services such as AWS.
 				</p>
 
 			</div>
 		</AboutSection>
 		<h1 id="skills" className="pt-10 mt-32 mb-10 text-6xl text-center">Skills</h1>
 		<CategoryList>
-			{ Array.from(skillsByCategory.keys()).length > 0 &&
+			{Array.from(skillsByCategory.keys()).length > 0 &&
 				Array.from(skillsByCategory.keys()).map((idCategory) => (
 					<SkillList key={`cat-${skillsByCategory.get(idCategory)?.name as string}`} name={skillsByCategory.get(idCategory)?.name as string} color={skillsByCategory.get(idCategory)?.color as string}>
 						{
@@ -55,7 +55,7 @@ export default function Home() {
 
 		<h1 id='projects' className='mt-32 text-6xl text-center'>Projects</h1>
 		<ProjectList setFilters={setFilters} categories={categories} totalPages={totalPages} pagination={pagination} setPagination={setPagination} >
-			{	projects.length > 0 &&
+			{projects.length > 0 &&
 				projects.map((project) => (
 					<ProjectCard key={`skill-${project.id}`} project={project} categoriesMap={categoriesMap} />
 				))
