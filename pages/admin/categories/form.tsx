@@ -91,17 +91,17 @@ const New = () => {
 	}
 	return (
 		<div className='flex justify-center'>
-			<form ref={form} onSubmit={id ? handleUpdate : handleCreate} className='flex flex-col gap-3 px-5 py-4 border rounded-lg'>
+			<form ref={form} onSubmit={id ? handleUpdate : handleCreate} className='flex flex-col gap-3 px-5 py-4 border rounded-lg border-txt-light dark:border-txt-dark'>
 
 				<h2 className='text-4xl text-center'>{id ? 'Update' : 'Create'}</h2>
 				{
 					<div className='text-red-600'>{errorMessage}</div>
 				}
-				<input type="text" placeholder="Name" className='text-xl text-center text-black' name='categoryName' defaultValue={name} />
-				<input type="color" placeholder="color" className='self-center text-xl text-center text-black' name='color' defaultValue={color ? color :'#1818181818'} />
+				<input type="text" placeholder="Name" className='text-xl text-center border-txt-light dark:border-txt-dark' name='categoryName' defaultValue={name} />
+				<input type="color" placeholder="color" className='self-center text-xl text-center border-txt-light dark:border-txt-dark' name='color' defaultValue={color ? color : '#1818181818'} />
 
 
-				<button type='submit' className='p-1 mb-2 text-2xl border rounded-lg hover:border-yellow-400 hover:scale-105'>{id ? 'Update' : 'Create'}</button>
+				<button type='submit' className='p-1 mb-2 text-2xl border rounded-lg border-txt-light dark:border-txt-dark hover:border-secondary dark:hover:border-secondary hover:scale-105'>{id ? 'Update' : 'Create'}</button>
 
 			</form>
 		</div >

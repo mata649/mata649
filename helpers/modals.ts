@@ -1,6 +1,8 @@
 import Swal, { SweetAlertResult } from 'sweetalert2';
 
 export const errorModal = (text: string) => {
+	text = Array.isArray(text) ? text[0].error : text;
+
 	Swal.fire({
 		title: 'Error!',
 		text: text.charAt(0).toUpperCase() + text.slice(1),
@@ -36,7 +38,7 @@ export const yesNoModal = async (
 		customClass: {
 			popup: 'modal-popup',
 			confirmButton: 'modal-confirm-button',
-			cancelButton: 'modal-cancel-button'
+			cancelButton: 'modal-cancel-button',
 		},
 	});
 

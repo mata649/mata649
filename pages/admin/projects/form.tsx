@@ -122,15 +122,15 @@ const New = () => {
 	}
 	return (
 		<div className='flex justify-center'>
-			<form ref={form} onSubmit={id ? handleUpdate : handleCreate} className='flex flex-col gap-3 px-5 py-4 border rounded-lg'>
+			<form ref={form} onSubmit={id ? handleUpdate : handleCreate} className='flex flex-col gap-3 px-5 py-4 border rounded-lg border-txt-light dark:border-txt-dark'>
 
 				<h2 className='text-4xl text-center'>{id ? 'Update' : 'Create'}</h2>
 				{
 					<div className='text-red-600'>{errorMessage}</div>
 				}
-				<input type="text" placeholder="Name" className='text-xl text-center text-black' name='projectName' defaultValue={name} />
+				<input type="text" placeholder="Name" className='text-xl text-center text-bg-txt-light dark:text-txt-dark' name='projectName' defaultValue={name} />
 
-				<select onChange={handleCategoryChange} defaultValue={idCategory} className='mb-2 text-xl bg-black' style={{ backgroundColor: "#181818", borderColor: "#ededed" }}>
+				<select onChange={handleCategoryChange} defaultValue={idCategory} className='mb-2 text-xl bg-back-light dark:bg-back-dark' >
 					{idCategory ? <option value={idCategory}>{categories.find((category) => (category.id === idCategory))?.name}</option> : <option value="">Category</option>}
 					{categories.map((category) => (
 
@@ -140,9 +140,9 @@ const New = () => {
 					))}
 
 				</select>
-				<input type="url" placeholder="GithubURL" className='self-center text-xl text-center text-black' name='githubURL' defaultValue={githubUrl} />
-				<ReactTextareaAutosize placeholder='Description' className='text-black' name='description' defaultValue={description} />
-				<button type='submit' className='p-1 mb-2 text-2xl border rounded-lg hover:border-yellow-400 hover:scale-105'>{id ? 'Update' : 'Create'}</button>
+				<input type="url" placeholder="GithubURL" className='self-center text-xl text-center text-bg-txt-light dark:text-txt-dark' name='githubURL' defaultValue={githubUrl} />
+				<ReactTextareaAutosize placeholder='Description' className='text-bg-txt-light dark:text-txt-dark' name='description' defaultValue={description} />
+				<button type='submit' className='p-1 mb-2 text-2xl border rounded-lg border-txt-light dark:border-txt-dark hover:border-secondary hover:scale-105'>{id ? 'Update' : 'Create'}</button>
 
 			</form>
 		</div >

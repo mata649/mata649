@@ -142,7 +142,7 @@ const Form = () => {
 					<ToggleButton setToggle={setLanguage} toggle={language} />
 				</div>
 				<div className='flex justify-center mb-3'>
-					<ReactTextareaAutosize name='titleText' placeholder='Title' className='self-center text-4xl text-center' defaultValue={title} style={{ backgroundColor: "#181818" }} />
+					<ReactTextareaAutosize name='titleText' placeholder='Title' className='self-center text-4xl text-center text-txt-light dark:text-txt-dark bg-back-light dark:bg-back-dark' defaultValue={title} />
 				</div>
 				<Editor
 					editorState={contentText}
@@ -156,7 +156,7 @@ const Form = () => {
 					}}
 				/>
 				<div className='flex justify-center mt-10'>
-					<button type='submit' className='p-1 mb-2 text-4xl border rounded-lg hover:border-yellow-400 hover:scale-105'>{id ? 'Update' : 'Create'}</button>
+					<button type='submit' className='p-1 mb-2 text-4xl border rounded-lg border-txt-light dark:border-txt-dark hover:border-secondary hover:scale-105'>{id ? 'Update' : 'Create'}</button>
 				</div>
 			</form>
 

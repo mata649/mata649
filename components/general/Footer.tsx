@@ -5,7 +5,7 @@ import { faTerminal, faUpLong } from "@fortawesome/free-solid-svg-icons";
 
 export const Footer = () => {
 	return (
-		<div id='contact' className='flex flex-col mt-48 border-t'>
+		<div id='contact' className='flex flex-col mt-48 border-t border-txt-light dark:border-txt-dark'>
 			<div className='flex items-center justify-center gap-3 mt-20'>
 				<h1 className='text-6xl '>Contact</h1>
 				<a href="#up">

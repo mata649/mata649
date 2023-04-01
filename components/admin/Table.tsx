@@ -6,7 +6,7 @@ export const Table = ({ children, labels }: {
 }) => {
 	return (<>
 
-		<table className='border border-collapse '>
+		<table className='border border-collapse border-txt-light dark:border-txt-dark'>
 			<thead>
 				<tr>
 					{labels.map((label) => (<th key={label}>{label}</th>))}

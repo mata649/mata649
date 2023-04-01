@@ -12,8 +12,8 @@ export const ProjectCard = ({ project: { githubUrl, idCategory, description, nam
 	}
 	return (
 
-		<div className='flex flex-col justify-between px-3 py-4 border rounded-lg hover:border-yellow-400 hover:scale-105 hover:border-2'>
-			<div className='w-full py-2 border-b-2'>
+		<div className='flex flex-col justify-between px-3 py-4 border rounded-lg border-txt-light dark:border-txt-dark hover:border-secondary dark:hover:border-secondary hover:scale-105 hover:border-2 hover:ease-out hover:duration-100'>
+			<div className='w-full py-2 border-b-2 border-txt-light dark:border-txt-dark'>
 				<h2 className='text-xl'>{name}</h2>
 			</div>
 			<p style={isLong ? { cursor: 'pointer' } : {}} onClick={() => setShowTruncateContent((prev) => !prev)} className='mt-1 text-xl'>{isLong ? truncateDescription(description) : description}</p>

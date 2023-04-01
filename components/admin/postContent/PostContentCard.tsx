@@ -18,14 +18,14 @@ export const PostContentCard = ({ postContent, handleDelete }: { postContent: Po
 		})
 	}
 	return (
-		<div className="p-2 border ">
+		<div className="p-2 border border-txt-light dark:border-txt-dark">
 
-			<p className='mb-2 text-3xl truncate border-b-2'>{postContent.title}</p>
+			<p className='mb-2 text-3xl truncate border-b-2 border-txt-light dark:border-txt-dark'>{postContent.title}</p>
 
 			<p className='mb-2'>{postContent.language}</p>
-			<div className='flex justify-between'>
-				<button onClick={handleRedirectToForm}><FontAwesomeIcon className='text-xl text-white hover:text-yellow-400' icon={faPenToSquare} /></button>
-				<button className='hover:text-yellow-400' onClick={() => handleDelete(postContent.id, postContent.title)}><FontAwesomeIcon className='text-xl text-white hover:text-yellow-400' icon={faTrashAlt} /></button>
+			<div className='flex justify-between '>
+				<button onClick={handleRedirectToForm}><FontAwesomeIcon className='text-xl text-txt-light dark:text-txt-dark hover:text-secondary dark:hover:text-secondary' icon={faPenToSquare} /></button>
+				<button className='hover:text-secondary dark:hover:text-secondary' onClick={() => handleDelete(postContent.id, postContent.title)}><FontAwesomeIcon className='text-xl text-txt-light dark:text-txt-dark hover:text-secondary dark:hover:text-secondary' icon={faTrashAlt} /></button>
 			</div>
 		</div>
 	)

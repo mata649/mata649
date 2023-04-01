@@ -36,13 +36,13 @@ export const Row = ({
 	}
 	return (
 		<tr className=''>
-			<td className='text-center border'>{post.defaultTitle}</td>
-			<td className='px-4 text-center border ' > <Link href={`/blog/${post.slug}`}  >{post.slug.length > 20 ? post.slug.slice(0, 20) : post.slug}</Link> </td>
-			<td className='text-center border'>{moment(post.publishedDate).calendar()}</td>
-			<td className='flex items-center justify-center gap-1 px-4 text-center border' >
-				<button onClick={handleRedirectToPostContent}><FontAwesomeIcon className='text-xl text-white hover:text-yellow-400' icon={faNewspaper} /> </button>
-				<button onClick={handleRedirectToForm}><FontAwesomeIcon className='text-xl text-white hover:text-yellow-400' icon={faPenToSquare} /> </button>
-				<button onClick={() => handleDelete(post.id, post.defaultTitle)}><FontAwesomeIcon className='text-xl text-white hover:text-yellow-400' icon={faTrashAlt} /></button>
+			<td className='text-center border border-txt-light dark:border-txt-dark'>{post.defaultTitle}</td>
+			<td className='px-4 text-center border border-txt-light dark:border-txt-dark ' > <Link href={`/blog/${post.slug}`}  >{post.slug.length > 20 ? post.slug.slice(0, 20) : post.slug}</Link> </td>
+			<td className='text-center border border-txt-light dark:border-txt-dark'>{moment(post.publishedDate).calendar()}</td>
+			<td className='flex items-center justify-center gap-1 px-4 text-center border border-txt-light dark:border-txt-dark' >
+				<button onClick={handleRedirectToPostContent}><FontAwesomeIcon className='text-xl text-txt-light dark:text-txt-dark hover:text-secondary dark:hover:text-secondary' icon={faNewspaper} /> </button>
+				<button onClick={handleRedirectToForm}><FontAwesomeIcon className='text-xl text-txt-light dark:text-txt-dark hover:text-secondary dark:hover:text-secondary' icon={faPenToSquare} /> </button>
+				<button onClick={() => handleDelete(post.id, post.defaultTitle)}><FontAwesomeIcon className='text-xl text-txt-light dark:text-txt-dark hover:text-secondary dark:hover:text-secondary' icon={faTrashAlt} /></button>
 			</td>
 		</tr>
 	)
