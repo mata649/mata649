@@ -28,9 +28,9 @@ export default function Home() {
 			<div className="flex flex-col items-center justify-center col-span-6 mx-4 md:col-start-2 md:col-span-4">
 				<h1 className="text-6xl ">Jose Mata</h1>
 				<p className="mt-10 text-2xl">
-					I&#39;m a person who is passionate about software development, software architecture and cloud.
-					For that reason, I always try to write code clean, testable, maintainable, reusable, and easy to extend,
-					following design patterns like Clean Architecture. I found my passion in Back-End development, although not limited to that, having also solid knowledge
+					I&#39;m a person who is passionate about software development, software architecture and the cloud.
+					For that reason, I always try to write a code which is clean, testable, maintainable, reusable, and easy to extend,
+					following design patterns like Clean Architecture. I found my passion in Back-End development, although I&#39;m not limited to that. I also have solid knowledge
 					about Front-End development with React/Next.js and cloud services such as AWS.
 				</p>
 
