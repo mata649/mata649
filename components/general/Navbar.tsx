@@ -39,9 +39,9 @@ export const Navbar = () => {
 						<li>
 							<Link href="/#projects" className="block py-2 pl-3 pr-4 rounded dark:text-txt-dark text-txt-light hover:bg-secondary md:border-0 ">Projects</Link>
 						</li>
-						<li>
+						{/* <li>
 							<Link href="/blog" className="block py-2 pl-3 pr-4 rounded dark:text-txt-dark text-txt-light hover:bg-secondary md:border-0 ">Blog</Link>
-						</li>
+						</li> */}
 						<li>
 							<Link href="#contact" className="block py-2 pl-3 pr-4 rounded dark:text-txt-dark text-txt-light hover:bg-secondary md:border-0 ">Contact</Link>
 						</li>

@@ -63,7 +63,7 @@ export default function Home() {
 
 		</ProjectList>
 		<h1 id="blog" className='mt-32 mb-20 text-6xl text-center'>Latest Posts</h1>
-		<PostList>
+		{/* <PostList>
 			{
 				posts.length > 0 &&
 				posts.map(({ id, defaultTitle, publishedDate, slug }) => (
@@ -71,7 +71,7 @@ export default function Home() {
 				))
 			}
 
-		</PostList>
+		</PostList> */}
 		<div className="flex justify-center mt-10">
 			<Link className="w-full text-2xl text-center text-primary" href="/blog" >See more..</Link>
 		</div>
