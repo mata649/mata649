@@ -7,7 +7,7 @@ const Login = () => {
 	const form = useRef<HTMLFormElement | null>(null)
 	const [errorMessage, setErrorMessage] = useState<string>('')
 	const { setLoading } = useContext(AppContext)
-	const {isLogged, logIn} = useContext(SessionContext)
+	const { isLogged, logIn } = useContext(SessionContext)
 	const router = useRouter()
 
 	useEffect(() => {
@@ -54,6 +54,7 @@ const Login = () => {
 	}
 	return (
 		<div className='flex justify-center'>
+
 
 			<form ref={form} onSubmit={handleSubmit} className='flex flex-col gap-6 px-10 text-center border rounded-lg'>
 				<h1 className='text-6xl'>LOGIN</h1>

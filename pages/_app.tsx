@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
 	return (<>
 		<Head>
-			<title>Jose Mata</title>
+			<title>💾 J0S3 M4T4</title>
 
 		</Head>
 		<AppProvider>
